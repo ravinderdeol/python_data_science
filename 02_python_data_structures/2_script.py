@@ -9,7 +9,7 @@ queue = deque(my_list)
 queue.append("wash the car")
 
 # removes the first element from the queue and returns it
-print(queue.popleft(), " - Done")
+print(queue.popleft(), "- done")
 
 # convert the deque object back into a list
 my_list_updated = list(queue)
