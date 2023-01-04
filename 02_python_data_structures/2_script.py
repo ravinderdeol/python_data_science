@@ -1,4 +1,3 @@
-# completed tasks drop off at the beginning while new tasks are added at the end
 from collections import deque
 
 my_list = ["pay bills", "tidy up", "walk the dog", "go to the pharmacy", "cook dinner", "mow the lawn", "water the plants"]
