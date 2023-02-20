@@ -2,7 +2,7 @@
 import yfinance as yf
 
 # Create a variable called tkr and assign it the ticker object from yfinance for the stock symbol tsla
-tkr = yf.Ticker("TSLA")
+tkr = yf.Ticker("tsla")
 
 # get the historical price data for the past 5 days for the stock tsla
 hist = tkr.history(period = "5d")
