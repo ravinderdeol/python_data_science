@@ -48,6 +48,9 @@ employees = employees.append(new_employees)
 # print the resulting dataframe after adding a new employee
 print(employees)
 
+# print the resulting dataframe if the salary column is not null
+print(employees[employees["salary"].notnull()])
+
 # notes
     # creating a dataframe from a list of lists
     # changing the default column data types is crucial if you plan to join other dataframes
