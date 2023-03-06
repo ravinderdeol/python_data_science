@@ -4,7 +4,7 @@ import pandas as pd
 # create a list of lists where each inner list represents an employees data
 employees_data = [
     ["9001", "jeff russell", "sales"],
-    ["9002", "jane boorman", "sales"],
+    ["9002", "jane boorman", "engineering"],
     ["9003", "tom heints", "sales"],
 ]
 
@@ -39,8 +39,18 @@ employees = employees.join(salaries)
 # print the resulting dataframe
 print(employees)
 
+# create a new series of employee data without salary data
+new_employees = pd.Series({"name": "dave jones", "job": "marketing"}, name = 9004)
+
+# add the new employee data to the employees dataframe
+employees = employees.append(new_employees)
+
+# print the resulting dataframe after adding a new employee
+print(employees)
+
 # notes
     # creating a dataframe from a list of lists
     # changing the default column data types is crucial if you plan to join other dataframes
     # pandas allow you to join dataframes together in the same way you would join tables in a relational database
     # dataframes support database style join operations though the merge and join methods
+    # the append method has been deprecated in favor of the concat method
