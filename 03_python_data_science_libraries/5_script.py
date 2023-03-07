@@ -36,9 +36,6 @@ salaries = salaries.set_index("number")
 # use the join method to join the salaries dataframe with the employees dataframe based on the number column
 employees = employees.join(salaries)
 
-# print the resulting dataframe
-print(employees)
-
 # create a new series of employee data without salary data
 new_employees = pd.Series({"name": "dave jones", "job": "marketing"}, name = 9004)
 
