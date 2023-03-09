@@ -18,11 +18,11 @@ with open(path, "r") as csv_file:
         cars.append(row)
 
 # open the output json file in write mode and dump the cars list to JSON format
-with open("/Users/Ravinder/Documents/code/github/python_data_science/04_accessing_data/cars.json", "w") as json_file:
+with open("", "w") as json_file:
     json.dump(cars, json_file)
 
 # open the json file in read mode and parse its contents as a json object which is stored in records
-with open("/Users/Ravinder/Documents/code/github/python_data_science/04_accessing_data/cars.json", "r") as json_file:
+with open("", "r") as json_file:
     records = json.load(json_file)
 
     # iterate over each record in the json array and print the relevant data to the console
@@ -30,4 +30,4 @@ with open("/Users/Ravinder/Documents/code/github/python_data_science/04_accessin
         print(f"year: {record['year']}\nmake: {record[' make'].strip()}\nmodel: {record[' model']}\nprice: {record[' price'].strip()}\n")
 
 # notes
-    #
+    # 
