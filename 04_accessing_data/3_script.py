@@ -23,4 +23,5 @@ print(cars)
     # flat files are the most common type of tabular data file
     # flat files are often plain text files, in csv, or tab separated values format with one record per line
     # alternative to the code above would be to turn the csv into a list of lists
-    # dict reader and reader methods have an optional delimiter parameter to specify the character that separates fields which is a comma by default
+    # dict reader and reader methods have an optional delimiter parameter you can specify for the character that separates fields
+    # the delimiter parameter is set to a comma by default
