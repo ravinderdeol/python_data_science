@@ -30,4 +30,4 @@ with open("", "r") as json_file:
         print(f"year: {record['year']}\nmake: {record[' make'].strip()}\nmodel: {record[' model']}\nprice: {record[' price'].strip()}\n")
 
 # notes
-    # this script treads a csv file and writes data to a json file then prints it to the console
+    # script to read a csv file and writes data to a json file then prints it to the console
