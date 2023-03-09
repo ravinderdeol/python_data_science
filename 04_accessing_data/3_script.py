@@ -24,5 +24,3 @@ print(cars)
     # flat files are often plain text files, in csv, or tab separated values format with one record per line
     # alternative to the code above would be to turn the csv into a list of lists
     # dict reader and reader methods have an optional delimiter parameter to specify the character that separates fields which is a comma by default
-
-
