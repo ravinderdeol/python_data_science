@@ -22,3 +22,4 @@ for i, line in enumerate(r.data.decode('utf-8').split('\n')):
 # notes
     # urllib3 library is designed to manipulate http requests using thread safe connection pooling minimizing resource needed on your end
     # urllib3 requires more manual work than requests library but it gives you more control over the requests
+    # the pool manager instance is how urllib3 makes requests
