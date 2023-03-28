@@ -32,4 +32,4 @@ for ticker in tickers:
 print(data)
 
 # notes
-    # this scrip obtains stock data from yfinance
+    # this script obtains stock data from yfinance
