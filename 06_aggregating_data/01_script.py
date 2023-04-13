@@ -1,6 +1,8 @@
 # imports the pandas library and renames it as 'pd' to be used later in the code.
 import pandas as pd
 
+## -- data to aggregate -- ##
+
 # defines a list of tuples containing order information
 orders = [
  (9423517, "2021-08-04", 9001),
@@ -59,6 +61,8 @@ df_emps = pd.DataFrame(emps, columns = ["EmpNo", "EmpName", "Location"])
 # creates a pandas dataframe from the 'locations' list of tuples, and sets the column names
 df_locations = pd.DataFrame(locations, columns = ["Location", "Region"])
 
+## -- combining dataframes -- ##
+
 # creates a new dataframe combining orders and details based on the common order number column
 df_sales = df_orders.merge(df_details)
 
@@ -77,7 +81,10 @@ df_result = df_sales_emps.merge(df_locations)
 # selects three columns from the result dataframe
 df_result = df_result[["Date", "Region", "Total"]]
 
-print(df_result)
+## -- grouping and aggregating data -- ##
+
+# group rows of the result dataframe then calculate the sum of the numerical values in other columns for each group creating a new dataframe
+df_date_region = df_result.groupby(["Date", "Region"]).sum()
 
 # notes
     # aggregate functions return a single result row based on an entire group of rows
@@ -85,3 +92,6 @@ print(df_result)
     # aggregating data can answer specific questions in a summarised way
     # data in this script would often be stored in seperate databases
     # in the merge method the order number column is used to join the dataframes by default
+    # to perform aggregate calculations on data it must first be sorted into relevant groups
+    # the groupby function splits data into subsets that have matching values for one or more columns
+    # multindex dataframes are dataframes that have multiple levels of indexing
