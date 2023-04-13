@@ -59,11 +59,29 @@ df_emps = pd.DataFrame(emps, columns = ["EmpNo", "EmpName", "Location"])
 # creates a pandas dataframe from the 'locations' list of tuples, and sets the column names
 df_locations = pd.DataFrame(locations, columns = ["Location", "Region"])
 
-# join the orders and details dataframes directly with the merge method
+# creates a new dataframe combining orders and details based on the common order number column
 df_sales = df_orders.merge(df_details)
+
+# calculates a new column called total by multiplying the price and quantity columns
+df_sales["Total"] = df_sales["Price"] * df_sales["Quantity"]
+
+# selects the three columns from the sales dataframe to assign them to a new dataframe
+df_sales = df_sales[["Date", "EmpNo", "Total"]]
+
+# combines the sales and employees dataframe based on the common employee number column
+df_sales_emps = df_sales.merge(df_emps)
+
+# combines the sales employees and locations dataframe on the common location column creating a new dataframe
+df_result = df_sales_emps.merge(df_locations)
+
+# selects three columns from the result dataframe
+df_result = df_result[["Date", "Region", "Total"]]
+
+print(df_result)
 
 # notes
     # aggregate functions return a single result row based on an entire group of rows
     # aggregate functions form a single aggregated summary row for each group
     # aggregating data can answer specific questions in a summarised way
     # data in this script would often be stored in seperate databases
+    # in the merge method the order number column is used to join the dataframes by default
