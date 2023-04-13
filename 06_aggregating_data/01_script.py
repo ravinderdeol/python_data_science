@@ -59,6 +59,9 @@ df_emps = pd.DataFrame(emps, columns = ["EmpNo", "EmpName", "Location"])
 # creates a pandas dataframe from the 'locations' list of tuples, and sets the column names
 df_locations = pd.DataFrame(locations, columns = ["Location", "Region"])
 
+# join the orders and details dataframes directly with the merge method
+df_sales = df_orders.merge(df_details)
+
 # notes
     # aggregate functions return a single result row based on an entire group of rows
     # aggregate functions form a single aggregated summary row for each group
