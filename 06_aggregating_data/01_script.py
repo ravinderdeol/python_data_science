@@ -86,6 +86,21 @@ df_result = df_result[["Date", "Region", "Total"]]
 # group rows of the result dataframe then calculate the sum of the numerical values in other columns for each group creating a new dataframe
 df_date_region = df_result.groupby(["Date", "Region"]).sum()
 
+## -- viewing aggregations by multi index -- ##
+
+# filter rows to only include those with an index that matches the tuple
+df_date_region = df_date_region[df_date_region.index.isin([("2021-08-04", "East"), ("2021-08-06", "West")])]
+
+## -- slicing a range of aggregated values -- ##
+
+# slice rows with index values between the two tuples
+df_date_region = df_date_region[("2021-08-04", "East"):("2021-08-06", "West")]
+
+## -- slicing within aggregation levels -- ##
+
+# use loc to slice based on index values between the two tuples and select all columns
+df_date_region = df_date_region.loc[(slice("2021-08-04", "2021-08-06"), slice(None)), :]
+
 # notes
     # aggregate functions return a single result row based on an entire group of rows
     # aggregate functions form a single aggregated summary row for each group
@@ -95,3 +110,8 @@ df_date_region = df_result.groupby(["Date", "Region"]).sum()
     # to perform aggregate calculations on data it must first be sorted into relevant groups
     # the groupby function splits data into subsets that have matching values for one or more columns
     # multindex dataframes are dataframes that have multiple levels of indexing
+    # index.isin is a pandas method returning a boolean array indicating whether the data at each index matches the given value
+    # you can pass more than one index value to the isin method to filter for multiple values
+    # the order of the retrieved records will match the order of the records in the dataframe not the order specified in the isin method
+
+
