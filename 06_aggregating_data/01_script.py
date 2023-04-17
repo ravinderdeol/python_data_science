@@ -115,6 +115,32 @@ df_date_region_total = df_date_region.append(ps)
 # select and print the rows of the dataframe where the index is 'all' and 'all'
 print(df_date_region_total[df_date_region_total.index.isin([("All", "All")])])
 
+## -- adding subtotals -- ##
+
+# initialize an empty dataframe to store the subtotals
+df_totals = pd.DataFrame(columns=df_date_region.columns)
+
+# iterate over each unique date value in the index of the dataframe 'df_date_region'
+for date, date_df in df_date_region.groupby(level=0):
+    
+    # append the current date dataframe to the 'df_totals' dataframe
+    df_totals = df_totals.append(date_df)
+
+    # calculate the sum of each column for the current date dataframe and store it in a pandas series object
+    ps = date_df.sum(axis=0)
+
+    # set the name of the pandas series object to a tuple with the date value and 'all'
+    ps.name = (date, "All")
+
+    # append the pandas series object to the 'df_totals' dataframe as a new row
+    df_totals = df_totals.append(ps)
+
+# append the total row to the 'df_totals' dataframe only once
+df_totals = df_totals.append(df_date_region_total.loc[("All", "All")])
+
+# print the updated 'df_totals' dataframe
+print(df_totals)
+
 # notes
     # aggregate functions return a single result row based on an entire group of rows
     # aggregate functions form a single aggregated summary row for each group
