@@ -113,7 +113,7 @@ ps.name = ("All", "All")
 df_date_region_total = df_date_region.append(ps)
 
 # select and print the rows of the dataframe where the index is 'all' and 'all'
-print(df_date_region_total[df_date_region_total.index.isin([("All", "All")])])
+# print(df_date_region_total[df_date_region_total.index.isin([("All", "All")])])
 
 ## -- adding subtotals -- ##
 
@@ -138,8 +138,13 @@ for date, date_df in df_date_region.groupby(level=0):
 # append the total row to the 'df_totals' dataframe only once
 df_totals = df_totals.append(df_date_region_total.loc[("All", "All")])
 
-# print the updated 'df_totals' dataframe
-print(df_totals)
+## -- selecting all rows in a group -- ##
+
+# group the dataframe by the values in the date and region columns
+group = df_result.groupby(["Date", "Region"])
+
+# get the group of rows in the dataframe at the specified date and region value
+print(group.get_group(("2021-08-05", "East")))
 
 # notes
     # aggregate functions return a single result row based on an entire group of rows
@@ -154,5 +159,6 @@ print(df_totals)
     # you can pass more than one index value to the isin method to filter for multiple values
     # the order of the retrieved records will match the order of the records in the dataframe not the order specified in the isin method
     # the append method will be replaced with concat in a future version of pandas
+    # put each of these ways to work with dataframes in separate scripts to practice with separate files for the data
 
 
