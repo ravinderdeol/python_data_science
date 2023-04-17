@@ -101,6 +101,20 @@ df_date_region = df_date_region[("2021-08-04", "East"):("2021-08-06", "West")]
 # use loc to slice based on index values between the two tuples and select all columns
 df_date_region = df_date_region.loc[(slice("2021-08-04", "2021-08-06"), slice(None)), :]
 
+## -- adding a grand total -- ##
+
+# calculate the sum of each column in the dataframe and store it in the ps pandas series object
+ps = df_date_region.sum(axis = 0)
+
+# rename the pandas series object to 'all' and 'all'
+ps.name = ("All", "All")
+
+# append the pandas series object to the original dataframe to create a new dataframe
+df_date_region_total = df_date_region.append(ps)
+
+# select and print the rows of the dataframe where the index is 'all' and 'all'
+print(df_date_region_total[df_date_region_total.index.isin([("All", "All")])])
+
 # notes
     # aggregate functions return a single result row based on an entire group of rows
     # aggregate functions form a single aggregated summary row for each group
@@ -113,5 +127,6 @@ df_date_region = df_date_region.loc[(slice("2021-08-04", "2021-08-06"), slice(No
     # index.isin is a pandas method returning a boolean array indicating whether the data at each index matches the given value
     # you can pass more than one index value to the isin method to filter for multiple values
     # the order of the retrieved records will match the order of the records in the dataframe not the order specified in the isin method
+    # the append method will be replaced with concat in a future version of pandas
 
 
